@@ -1,12 +1,23 @@
 import requests
+import json
 
-url = "https://10.32.1.210/restconf/data/Cisco-IOS-XE-interfaces-oper:interfaces"
+url = "http://10.32.1.205/ins"
 
-payload = {}
+payload = json.dumps({
+  "ins_api": {
+    "version": "1.0",
+    "type": "cli_show",
+    "chunk": "0",
+    "sid": "sid",
+    "input": "show ip int brief",
+    "output_format": "json"
+  }
+})
 headers = {
+  'Content-Type': 'application/json',
   'Authorization': 'Basic Y2lzY286Y2lzY28='
 }
 
-response = requests.request("GET", url, headers=headers, data=payload)
+response = requests.request("POST", url, headers=headers, data=payload)
 
 print(response.text)
