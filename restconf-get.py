@@ -1,6 +1,8 @@
 import requests
 import json
 from pprint import pprint
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 router = {"ip": "10.32.1.210", "port":"443", "user":"cisco","password":"cisco"}
 
@@ -18,4 +20,3 @@ print("/" * 50)
 if api_data["Cisco-IOS-XE-interfaces-oper:interface"]["admin-status"] == 'if-state-up':
     print('Interface is up')
 
-pprint(["Cisco-IOS-XE-interfaces-oper:interface"])
