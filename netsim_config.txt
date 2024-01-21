@@ -1,0 +1,28 @@
+config
+devices authgroups group default default-map remote-name admin remote-password admin 
+devices device router1
+address 127.0.0.1 port 10022
+device-type cli ned-id netconf protocol ssh
+state admin-state unlocked
+authgroup default
+commit
+ssh fetch-host-keys
+sync-from
+
+devices device router2
+address 127.0.0.1 port 10023
+device-type cli ned-id netconf protocol ssh
+state admin-state unlocked
+authgroup default
+commit
+ssh fetch-host-keys
+sync-from
+
+devices device router3
+address 127.0.0.1 port 10024
+device-type cli ned-id netconf protocol ssh
+state admin-state unlocked
+authgroup default
+commit
+ssh fetch-host-keys
+sync-from
